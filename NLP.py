@@ -1,23 +1,26 @@
+#coding: utf8
+# author: Xinyi Wu (xinyi.wu5@pactera.com)
 import gensim.summarization
 
-
-def news_title_filter(title):
+def newsTitleFilter(title):
   return True
 
-
-def news_summary_filter(summary):
+def newsSummaryFilter(summary):
   return True
-
 
 class Processor:
-
   def __init__(self, news):
-    self.list_news = news
+    self.listNews = news
 
   def summarize(self):
-    for news in self.list_news:
-      news['summary_gensim'] = gensim.summarization.summarize(news['article'], word_count=100)
+    for news in self.listNews:
+      news['summaryGensim'] = gensim.summarization.summarize(news['article'],
+                                                             word_count=100)
 
   @property
-  def news_list(self):
-    return self.list_news
+  def newsList(self):
+    return self.listNews
+
+if __name__ == '__main__':
+    print(newsSummaryFilter('This is a fake news.'))
+    print(newsTitleFilter('Today is a good day.'))

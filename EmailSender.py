@@ -1,3 +1,5 @@
+#coding: utf8
+# author: Xinyi Wu (xinyi.wu5@pactera.com)
 import logging, logging.handlers
 
 class BufferingSMTPHandler(logging.handlers.BufferingHandler):
@@ -8,7 +10,8 @@ class BufferingSMTPHandler(logging.handlers.BufferingHandler):
     self.fromaddr = fromaddr
     self.toaddrs = toaddrs
     self.subject = subject
-    self.setFormatter(logging.Formatter("%(asctime)s %(levelname)-5s %(message)s"))
+    self.setFormatter(logging.Formatter("%(asctime)s %(levelname)-5s %("
+                                        "message)s"))
 
   def flush(self):
     if len(self.buffer) > 0:
@@ -22,7 +25,8 @@ class BufferingSMTPHandler(logging.handlers.BufferingHandler):
         smtp.starttls()
         smtp.ehlo()
         smtp.login("pingankensho@gmail.com", "PinganKensho521")
-        msg = "From: {}\r\nTo: {}\r\nSubject: {}\r\n\r\n".format(self.fromaddr, ''.join(self.toaddrs) + ",", self.subject)
+        msg = "From: {}\r\nTo: {}\r\nSubject: {}\r\n\r\n".format(
+          self.fromaddr, ''.join(self.toaddrs) + ",", self.subject)
         for record in self.buffer:
           s = self.format(record)
           print(s)
@@ -32,3 +36,6 @@ class BufferingSMTPHandler(logging.handlers.BufferingHandler):
       except:
         self.handleError(None)  # no particular record
       self.buffer = []
+
+if __name__ == '__main__':
+    pass

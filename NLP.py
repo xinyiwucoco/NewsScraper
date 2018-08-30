@@ -1,6 +1,9 @@
 #coding: utf8
 # author: Xinyi Wu (xinyi.wu5@pactera.com)
 import gensim.summarization
+import logging
+
+logger = logging.getLogger("NewsScraper.NLP")
 
 def newsTitleFilter(title):
   return True
@@ -14,8 +17,12 @@ class Processor:
 
   def summarize(self):
     for news in self.listNews:
-      news['summaryGensim'] = gensim.summarization.summarize(news['article'],
-                                                             word_count=100)
+      try:
+        news['summaryGensim'] = gensim.summarization.summarize(news['article'],
+                                                               word_count=100)
+      except:
+        logger.exception("Error in summarizing " + news['title'])
+        news['summaryGensim'] = None
 
   @property
   def newsList(self):

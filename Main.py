@@ -64,7 +64,7 @@ if __name__ == '__main__':
   today = dt.date.today().strftime("%Y%m%d")
   usage = "usage: %prog [options]"
   parser = optparse.OptionParser(usage=usage)
-  parser.add_option("-e", "--endDate", default=today,
+  parser.add_option("-e", "--endDate", default='20180808',
             help="the end DATE of news scraping, in format of 'YYYYmmdd'")
   parser.add_option("-d", "--numDays", type=int, default=1,
             help="NUMBER of days for news scraping")
@@ -81,7 +81,7 @@ if __name__ == '__main__':
             help="change USERNAME of Wall Street Journal")
   parser.add_option("-w", "--wsjPassword", default='ready2ca',
             help="change PASSWORD of Wall Street Journal")
-  parser.add_option("-w", "--emailAddr", default='xinyi.wu5@pactera.com',
+  parser.add_option("--emailAddr", default='1437188978@qq.com',
                     help="email ADDRESSES to send logs (separate by ',')")
   parser.add_option("-q", "--quiet",
             action="store_false", dest="verbose", default=True,

@@ -4,9 +4,9 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 import datetime as dt
-from crawlers.nytimes import scraperNytimes, scraperNytimesDaily
-from crawlers.reuters import scraperReuters
-from crawlers.wallstreetjournal import scraperWsj
+from crawlers.Nytimes import scraperNytimes, scraperNytimesDaily
+from crawlers.Reuters import scraperReuters
+from crawlers.Wallstreetjournal import scraperWsj
 import logging
 
 logger = logging.getLogger("NewsScraper.crawlers")

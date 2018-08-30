@@ -20,6 +20,8 @@ direct-ranker
 target/
 out/
 __pycache__/
+log/
+news/
 
 *.iml
 META-INF
